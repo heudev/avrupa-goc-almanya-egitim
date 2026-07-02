@@ -8,149 +8,48 @@
 <link rel="icon" href="assets/logo.webp" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
-  :root {
-    --green: #004737;
-    --green-deep: #002e23;
-    --green-darker: #001c16;
-    --gold: #f2c200;
-    --ink: #1a1a1a;
-    --paper: #f9faf7;
-    --line: rgba(255, 255, 255, 0.12);
-  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
   body {
     font-family: 'Inter', system-ui, sans-serif;
-    color: #eaf1ee;
-    background:
-      radial-gradient(1200px 600px at 15% -10%, rgba(242, 194, 0, 0.10), transparent 60%),
-      radial-gradient(900px 500px at 100% 0%, rgba(0, 96, 74, 0.55), transparent 55%),
-      linear-gradient(160deg, var(--green-deep), var(--green-darker));
+    background: #f9faf7;
+    color: #1a1a1a;
     min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: clamp(40px, 8vw, 80px) 20px;
     -webkit-font-smoothing: antialiased;
-    padding: clamp(28px, 6vw, 72px) clamp(20px, 5vw, 48px) 64px;
   }
-  .wrap { max-width: 1080px; margin: 0 auto; }
-
-  header.hero { display: flex; flex-direction: column; gap: 22px; margin-bottom: clamp(36px, 6vw, 60px); }
-  .brand { display: flex; align-items: center; gap: 14px; }
-  .brand img { height: 40px; width: auto; }
-  .brand span {
-    font-weight: 700; letter-spacing: .04em; font-size: 14px;
-    text-transform: uppercase; color: #cfe0da;
-  }
-  .kicker {
-    display: inline-flex; align-items: center; gap: 8px; align-self: flex-start;
-    font-size: 12.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
-    color: var(--green-darker); background: var(--gold);
-    padding: 7px 14px; border-radius: 999px;
-  }
+  .wrap { width: 100%; max-width: 520px; }
   h1 {
-    font-size: clamp(30px, 5.2vw, 52px); line-height: 1.05; font-weight: 800;
-    letter-spacing: -0.02em; max-width: 18ch;
+    font-size: 15px; font-weight: 600; letter-spacing: .04em;
+    text-transform: uppercase; color: #004737; margin-bottom: 24px;
   }
-  h1 em { color: var(--gold); font-style: normal; }
-  .lead { color: #b9cdc6; font-size: clamp(15px, 2vw, 18px); max-width: 58ch; line-height: 1.6; }
-
-  .grid {
-    display: grid; gap: 18px;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  ul { list-style: none; border-top: 1px solid #e3e8e5; }
+  li { border-bottom: 1px solid #e3e8e5; }
+  a {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 16px 4px; text-decoration: none; color: #1a1a1a;
+    transition: color .15s ease, padding .15s ease;
   }
-  .card {
-    position: relative; display: flex; flex-direction: column;
-    background: rgba(255, 255, 255, 0.045);
-    border: 1px solid var(--line);
-    border-radius: 18px; padding: 24px 24px 22px;
-    text-decoration: none; color: inherit;
-    transition: transform .22s ease, border-color .22s ease, background .22s ease;
-    overflow: hidden;
-  }
-  .card::before {
-    content: ""; position: absolute; inset: 0;
-    background: linear-gradient(180deg, transparent, rgba(242, 194, 0, 0.06));
-    opacity: 0; transition: opacity .22s ease;
-  }
-  .card:hover { transform: translateY(-4px); border-color: rgba(242, 194, 0, 0.5); background: rgba(255, 255, 255, 0.07); }
-  .card:hover::before { opacity: 1; }
-  .card:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-
-  .card .row { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 14px; }
-  .tag {
-    font-weight: 800; font-size: 13px; letter-spacing: .06em;
-    color: var(--gold); background: rgba(242, 194, 0, 0.12);
-    border: 1px solid rgba(242, 194, 0, 0.3);
-    padding: 5px 11px; border-radius: 8px;
-  }
-  .badge {
-    font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
-    color: var(--green-darker); background: var(--gold);
-    padding: 4px 9px; border-radius: 999px;
-  }
-  .card h2 { font-size: 18px; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
-  .card p { color: #a9c0b9; font-size: 13.5px; line-height: 1.5; }
-  .card .go {
-    margin-top: auto; padding-top: 18px; display: inline-flex; align-items: center; gap: 8px;
-    font-weight: 600; font-size: 13.5px; color: #dfeee8;
-  }
-  .card .go svg { transition: transform .22s ease; }
-  .card:hover .go svg { transform: translateX(4px); }
-  .card .go .lbl { color: #8fa9a2; }
-
-  footer { margin-top: 48px; color: #7f978f; font-size: 13px; border-top: 1px solid var(--line); padding-top: 22px; }
-  footer a { color: #cfe0da; }
+  a:hover { color: #004737; padding-left: 10px; }
+  .name { font-weight: 500; font-size: 16px; }
+  .file { font-size: 13px; color: #8a938f; }
+  a:hover .file { color: #004737; }
 </style>
 </head>
 <body>
   <div class="wrap">
-    <header class="hero">
-      <div class="brand">
-        <img src="assets/logo-white.webp" alt="Avrupa Göç" />
-        <span>Avrupa Göç</span>
-      </div>
-      <span class="kicker">Landing Page Arşivi</span>
-      <h1>Almanya eğitim kampanyası <em>landing sayfaları</em></h1>
-      <p class="lead">Aşağıdaki versiyonlardan birine tıklayarak ilgili landing page'i aç. Her biri farklı bir başlık ve akış denemesidir; <strong>v13-split</strong> güncel ana versiyondur.</p>
-    </header>
-
-    <main class="grid" id="grid"></main>
-
-    <footer>
-      Avrupa Göç · Almanya'da Üniversite ve Ausbildung ·
-      <a href="ADAY2-v13-split.html">Güncel sayfaya git →</a>
-    </footer>
+    <h1>Landing Page Versiyonları</h1>
+    <ul>
+      <li><a href="ADAY2-v13-split.html"><span class="name">v13 — split (güncel)</span><span class="file">ADAY2-v13-split.html</span></a></li>
+      <li><a href="ADAY2-v11-esinli.html"><span class="name">v11 — esinli</span><span class="file">ADAY2-v11-esinli.html</span></a></li>
+      <li><a href="ADAY2-v10-sspage.html"><span class="name">v10 — sspage</span><span class="file">ADAY2-v10-sspage.html</span></a></li>
+      <li><a href="ADAY2-v8-elithair.html"><span class="name">v8 — elithair</span><span class="file">ADAY2-v8-elithair.html</span></a></li>
+      <li><a href="ADAY2-v4-dosya.html"><span class="name">v4 — dosya</span><span class="file">ADAY2-v4-dosya.html</span></a></li>
+      <li><a href="ADAY2-v3.html"><span class="name">v3</span><span class="file">ADAY2-v3.html</span></a></li>
+    </ul>
   </div>
-
-  <script>
-    const versions = [
-      { tag: "v13", file: "ADAY2-v13-split.html", current: true,
-        title: "500+ Öğrencinin Yol Haritası", desc: "Split düzen · güncel ana versiyon." },
-      { tag: "v11", file: "ADAY2-v11-esinli.html",
-        title: "Yeni Hayatın Almanya'da Başlasın", desc: "Esinli varyant · duygusal başlık akışı." },
-      { tag: "v10", file: "ADAY2-v10-sspage.html",
-        title: "Geleceğini Almanya'da Yeniden Yaz", desc: "SS-page düzeni denemesi." },
-      { tag: "v8", file: "ADAY2-v8-elithair.html",
-        title: "500+ Öğrencinin Tercihi", desc: "Elithair tarzı yerleşim." },
-      { tag: "v4", file: "ADAY2-v4-dosya.html",
-        title: "Dosyanı Birlikte Açalım", desc: "Dosya/başvuru odaklı çağrı." },
-      { tag: "v3", file: "ADAY2-v3.html",
-        title: "500+ Öğrencinin Yol Haritası", desc: "İlk tam versiyon." },
-    ];
-
-    const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
-
-    document.getElementById("grid").innerHTML = versions.map(v => `
-      <a class="card" href="${v.file}">
-        <div class="row">
-          <span class="tag">${v.tag}</span>
-          ${v.current ? '<span class="badge">Güncel</span>' : ''}
-        </div>
-        <h2>${v.title}</h2>
-        <p>${v.desc}</p>
-        <span class="go"><span class="lbl">${v.file}</span> ${arrow}</span>
-      </a>
-    `).join("");
-  </script>
 </body>
 </html>
